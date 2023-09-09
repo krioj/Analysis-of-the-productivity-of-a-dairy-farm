@@ -27,7 +27,7 @@ namespace Tests
 
             Assert.AreEqual(stats.PriceForMilk, 4);
             Assert.AreEqual(stats.MaxMilk, 5);
-            Assert.AreEqual(stats.MinMilk, 2); 
+            Assert.AreEqual(stats.MinMilk, 2);
             Assert.AreEqual(stats.SumLitres, 10);
             Assert.AreEqual(stats.MoneyForMilk, 40);
             Assert.AreEqual(stats.Days, 3);

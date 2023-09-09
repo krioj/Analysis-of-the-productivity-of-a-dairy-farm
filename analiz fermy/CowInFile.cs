@@ -8,7 +8,6 @@
         public const string MilkInFile = "feed.txt";
 
         public CowInFile(int namber) : base(namber)
-
         {
         }
 
@@ -68,13 +67,6 @@
 
         public override Statistics GetStatistics()          // pszekazuje dane do "CountStatistics" z "ReadFromFile"
         {
-            return CountStatistics(ReadFromFile());
-
-        }
-        private List<object> ReadFromFile()                 // metoda dla odczytywanie danyh z pliku
-        {
-            List<object> lists = new List<object>();
-
             var LitresMilkInDay = new List<float>();
             if (File.Exists(MilkInFile))                    // sprawdza czy plik istnieje
             {
@@ -86,7 +78,6 @@
                     }
                 }
             }
-            lists.Add(LitresMilkInDay);
 
             var KilogramsFeedInDay = new List<float>();
             if (File.Exists(FeedInFile))
@@ -99,28 +90,16 @@
                     }
                 }
             }
-            lists.Add(KilogramsFeedInDay);
-            return lists;
-        }
-        private Statistics CountStatistics(List<object> lists)    // Metoda jaka zwruci wypelniony obiekt z statystykami
-        {
+
             var statistic = new Statistics();
-            int a = 0;
-            foreach (List<float> list in lists)
+
+            foreach (float milk in LitresMilkInDay)
             {
-
-                if (a == 0)
-                    foreach (float milk in list)
-                    {
-                        statistic.AddFeedInStatistics(milk);
-                    }
-                a++;
-                if (a == 1)
-                    foreach (float feet in list)
-                    {
-                        statistic.AddMilkInStatistics(feet);
-                    }
-
+                statistic.AddFeedInStatistics(milk);
+            }
+            foreach (float feet in KilogramsFeedInDay)
+            {
+                statistic.AddMilkInStatistics(feet);
             }
             return statistic;
         }

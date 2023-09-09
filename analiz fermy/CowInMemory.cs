@@ -6,8 +6,10 @@
         public CowInMemory(int namber) : base(namber)
         {
         }
+
         internal List<float> KilogramsFeedInDay = new List<float>();
         internal List<float> LitresMilkInDay = new List<float>();
+
         public override void AddFeed(float kilograms)
         {
             KilogramsFeedInDay.Add(kilograms);

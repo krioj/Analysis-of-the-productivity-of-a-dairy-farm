@@ -4,6 +4,7 @@ void CowDataAdded(object sender, EventArgs args)
 {
     Console.WriteLine("dane dodano");
 }
+
 Console.WriteLine("witam w ptogramie dla oceny rentowności crow na farmie");
 while (true)
 {
@@ -120,6 +121,17 @@ while (true)
                         Console.Clear();
 
                         var statsf = cowf.GetStatistics();
+
+                        Console.WriteLine($"cena za kilogram karmy: {statsf.PriceForFeed},         cena za sprzedaż litru mleka: {statsf.PriceForMilk}");
+                        Console.WriteLine($"za {statsf.Days} dni było zjedzone {statsf.SumKilograms} kilogramów karmy i wypompowano {statsf.SumLitres} litry mleka\n");
+                        Console.WriteLine($"cena za wyprodukowane mleko: {statsf.MoneyForMilk:N2} zł\n");
+                        Console.WriteLine($"cena zjedzonej karmy: {statsf.MoneyForFeed:N2} zł\n");
+                        Console.WriteLine($"zarobki na krowie: {statsf.Earnings:N2}  zł\n");
+                        Console.WriteLine($"średni dochód na krowę: {statsf.AverageEarnings:N2} zł\n");
+                        Console.WriteLine($"min zjedzonej karmy: {statsf.MinFeed} kg");
+                        Console.WriteLine($"max zjedzonej karmy: {statsf.MaxFeed} kg\n");
+                        Console.WriteLine($"min wypompowanego mleka {statsf.MinMilk} l");
+                        Console.WriteLine($"max wypompowanego mleka {statsf.MaxMilk} l");
 
                         Console.ReadKey();
                         break;
