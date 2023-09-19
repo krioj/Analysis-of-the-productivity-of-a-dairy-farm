@@ -4,8 +4,8 @@
     public class CowInFile : CowBase // IAnimals
     {
 
-        private const string AmoutFeedInFile = "milk.txt";
-        private const string AmoutMilkInFile = "feed.txt";
+        private const string AmoutFeedInFile = "AmoutMilk.txt";
+        private const string AmoutMilkInFile = "AmoutFeed.txt";
 
         public CowInFile(int namber) : base(namber)
         {
