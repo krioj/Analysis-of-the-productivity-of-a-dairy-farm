@@ -25,7 +25,7 @@ while (true)
             Console.Clear();
             Console.WriteLine("1. dodać kolejny dzień/dni (musicie wprowadzić spożywania karmy i produkowanie mleka)");
             Console.WriteLine("2. pokazać tabelę z danymi");
-            Console.WriteLine("wybierz \"q\" dla wyjścia z programu");
+            Console.WriteLine("wybierz \"q\" zeby wrucic");
 
             string reader = Console.ReadLine();
 
@@ -40,9 +40,9 @@ while (true)
                         Console.WriteLine("wybierz \"q\" dla wyjścia z dodawaniu");
                         Console.WriteLine("ile dniw dodać?");
 
-                        for (int i = int.Parse(Console.ReadLine()), a = 0; a < i; a++)
+                        for (int i = int.Parse(Console.ReadLine()), a = 1; a <= i; a++)
                         {
-
+                            Console.WriteLine($"dzien {a}");
                             Console.WriteLine($"dodaj ilość spożywania karmy (Kg/dziennie)");
                             cowM.AddFeed(Console.ReadLine());
 
@@ -105,9 +105,9 @@ while (true)
                         Console.WriteLine("wybierz \"q\" dla wyjścia z dodawaniu");
                         Console.WriteLine("ile dniw dodać?");
 
-                        for (int i = int.Parse(Console.ReadLine()), a = 0; a < i; a++)
+                        for (int i = int.Parse(Console.ReadLine()), a = 1; a <= i; a++)
                         {
-
+                            Console.WriteLine($"dzien {a}");
                             Console.WriteLine($"dodaj ilość spożywania karmy (Kg/dziennie)");
                             cowf.AddFeed(Console.ReadLine());
 

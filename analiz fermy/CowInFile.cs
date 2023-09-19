@@ -4,8 +4,8 @@
     public class CowInFile : CowBase // IAnimals
     {
 
-        public const string FeedInFile = "milk.txt";
-        public const string MilkInFile = "feed.txt";
+        private const string AmoutFeedInFile = "milk.txt";
+        private const string AmoutMilkInFile = "feed.txt";
 
         public CowInFile(int namber) : base(namber)
         {
@@ -13,15 +13,15 @@
 
         public override event DataAddedDelegate DataAdded;
 
-        public void ClearFile()
+        internal void ClearFile()
         {
-            File.WriteAllText(MilkInFile, string.Empty);
-            File.WriteAllText(FeedInFile, string.Empty);
+            File.WriteAllText(AmoutMilkInFile, string.Empty);
+            File.WriteAllText(AmoutFeedInFile, string.Empty);
         }
 
         public override void AddFeed(float kilograms)
         {
-            using (var writer = File.AppendText(FeedInFile))
+            using (var writer = File.AppendText(AmoutFeedInFile))
             {
                 writer.WriteLine(kilograms);
             }
@@ -30,21 +30,10 @@
                 DataAdded(this, new EventArgs());
             }
         }
-        public override void AddFeed(string kilograms)
-        {
-            if (float.TryParse(kilograms, out float kilogramsFl))
-            {
-                AddFeed(kilogramsFl);
-            }
-            else
-            {
-                throw new Exception("źle podana liczba");
-            }
-        }
 
         public override void AddMilk(float litres)
         {
-            using (var writer = File.AppendText(MilkInFile))
+            using (var writer = File.AppendText(AmoutMilkInFile))
             {
                 writer.WriteLine(litres);
             }
@@ -53,51 +42,40 @@
                 DataAdded(this, new EventArgs());
             }
         }
-        public override void AddMilk(string litres)
-        {
-            if (float.TryParse(litres, out float litresFl))
-            {
-                AddMilk(litresFl);
-            }
-            else
-            {
-                throw new Exception("źle podana liczba");
-            }
-        }
 
         public override Statistics GetStatistics()          // pszekazuje dane do "CountStatistics" z "ReadFromFile"
         {
-            var LitresMilkInDay = new List<float>();
-            if (File.Exists(MilkInFile))                    // sprawdza czy plik istnieje
+            var AmoutMilk = new List<float>();
+            if (File.Exists(AmoutMilkInFile))                    // sprawdza czy plik istnieje
             {
-                using (var reader = File.OpenText(MilkInFile))
+                using (var reader = File.OpenText(AmoutMilkInFile))
                 {
                     for (string line = reader.ReadLine(); line != null; line = reader.ReadLine())
                     {
-                        LitresMilkInDay.Add(float.Parse(line));
+                        AmoutMilk.Add(float.Parse(line));
                     }
                 }
             }
 
-            var KilogramsFeedInDay = new List<float>();
-            if (File.Exists(FeedInFile))
+            var AmountFeed = new List<float>();
+            if (File.Exists(AmoutFeedInFile))
             {
-                using (var reader = File.OpenText(FeedInFile))
+                using (var reader = File.OpenText(AmoutFeedInFile))
                 {
                     for (string line = reader.ReadLine(); line != null; line = reader.ReadLine())
                     {
-                        KilogramsFeedInDay.Add(float.Parse(line));
+                        AmountFeed.Add(float.Parse(line));
                     }
                 }
             }
 
             var statistic = new Statistics();
 
-            foreach (float milk in LitresMilkInDay)
+            foreach (float milk in AmoutMilk)
             {
                 statistic.AddFeedInStatistics(milk);
             }
-            foreach (float feet in KilogramsFeedInDay)
+            foreach (float feet in AmountFeed)
             {
                 statistic.AddMilkInStatistics(feet);
             }

@@ -7,45 +7,24 @@
         {
         }
 
-        internal List<float> KilogramsFeedInDay = new List<float>();
-        internal List<float> LitresMilkInDay = new List<float>();
+        private List<float> AmountFeed = new List<float>();
+        private List<float> AmoutMilk = new List<float>();
 
         public override void AddFeed(float kilograms)
         {
-            KilogramsFeedInDay.Add(kilograms);
+            AmountFeed.Add(kilograms);
             if (DataAdded != null)
             {
                 DataAdded(this, new EventArgs());
             }
         }
-        public override void AddFeed(string kilograms)
-        {
-            if (float.TryParse(kilograms, out float kilogramsFl))
-            {
-                AddFeed(kilogramsFl);
-            }
-            else
-            {
-                throw new Exception("źle podana liczba");
-            }
-        }
+
         public override void AddMilk(float litres)
         {
-            LitresMilkInDay.Add(litres);
+            AmoutMilk.Add(litres);
             if (DataAdded != null)
             {
                 DataAdded(this, new EventArgs());
-            }
-        }
-        public override void AddMilk(string litres)
-        {
-            if (float.TryParse(litres, out float litresFl))
-            {
-                AddMilk(litresFl);
-            }
-            else
-            {
-                throw new Exception("źle podana liczba");
             }
         }
 
@@ -53,11 +32,11 @@
         {
             var statistics = new Statistics();
 
-            foreach (var litres in LitresMilkInDay)
+            foreach (var litres in AmoutMilk)
             {
                 statistics.AddMilkInStatistics(litres);
             }
-            foreach (var kilograms in KilogramsFeedInDay)
+            foreach (var kilograms in AmountFeed)
             {
                 statistics.AddFeedInStatistics(kilograms);
             }
