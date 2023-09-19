@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductivityAnalysis", "analiz fermy\ProductivityAnalysis.csproj", "{B6383694-BF21-42F0-9768-FEC5283D2A3D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductivityAnalysis", "FarmAnalysis\ProductivityAnalysis.csproj", "{B6383694-BF21-42F0-9768-FEC5283D2A3D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{B9CCC473-8D79-43E6-9E0B-C01C2CB3E714}"
 EndProject

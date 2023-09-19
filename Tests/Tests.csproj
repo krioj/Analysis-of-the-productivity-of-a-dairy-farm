@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\analiz fermy\ProductivityAnalysis.csproj" />
+    <ProjectReference Include="..\FarmAnalysis\ProductivityAnalysis.csproj" />
   </ItemGroup>
 
 </Project>
