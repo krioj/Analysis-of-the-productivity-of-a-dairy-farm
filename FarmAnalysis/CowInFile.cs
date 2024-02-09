@@ -43,10 +43,10 @@
             }
         }
 
-        public override Statistics GetStatistics()          // pszekazuje dane do "CountStatistics" z "ReadFromFile"
+        public override Statistics GetStatistics()
         {
             var AmoutMilk = new List<float>();
-            if (File.Exists(AmoutMilkInFile))                    // sprawdza czy plik istnieje
+            if (File.Exists(AmoutMilkInFile))
             {
                 using (var reader = File.OpenText(AmoutMilkInFile))
                 {

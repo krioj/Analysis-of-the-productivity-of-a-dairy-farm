@@ -8,7 +8,7 @@ namespace analiz_fermy
 
         public CowBase(int namber)
         {
-            this.Namber = namber;
+            Namber = namber;
         }
 
         public int Namber { get; private set; }

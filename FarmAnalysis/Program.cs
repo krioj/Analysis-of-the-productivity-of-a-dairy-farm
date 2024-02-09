@@ -5,10 +5,9 @@ void CowDataAdded(object sender, EventArgs args)
     Console.WriteLine("dane dodano");
 }
 
-Console.WriteLine("witam w ptogramie dla oceny rentowności crow na farmie");
+Console.WriteLine("witam w programie dla oceny rentowości crów na farmie");
 while (true)
 {
-    Console.Clear();
     Console.WriteLine("na czym będziemy operować? (q == exid)");
     Console.WriteLine("1. na pamięci");
     Console.WriteLine("2. na plikach");
@@ -25,7 +24,7 @@ while (true)
             Console.Clear();
             Console.WriteLine("1. dodać kolejny dzień/dni (musicie wprowadzić spożywania karmy i produkowanie mleka)");
             Console.WriteLine("2. pokazać tabelę z danymi");
-            Console.WriteLine("wybierz \"q\" zeby wrucic");
+            Console.WriteLine("wybierz \"q\" zeby wrucic do meni głównego");
 
             string reader = Console.ReadLine();
 
@@ -37,16 +36,16 @@ while (true)
                 {
                     case "1":
                         Console.Clear();
-                        Console.WriteLine("wybierz \"q\" dla wyjścia z dodawaniu");
-                        Console.WriteLine("ile dniw dodać?");
+                        Console.WriteLine("wybierz \"q\" dla wyjścia z meni dodawania");
+                        Console.WriteLine("ile dniw chcesz dodać?");
 
                         for (int i = int.Parse(Console.ReadLine()), a = 1; a <= i; a++)
                         {
-                            Console.WriteLine($"dzien {a}");
-                            Console.WriteLine($"dodaj ilość spożywania karmy (Kg/dziennie)");
+                            Console.WriteLine($"dzień {a}");
+                            Console.WriteLine($"dodaj ilość spożywania karmy (kilogramów dziennie)");
                             cowM.AddFeed(Console.ReadLine());
 
-                            Console.WriteLine($"dodaj ilość produkowanego mleka (L/dziennie):");
+                            Console.WriteLine($"dodaj ilość produkowanego mleka (litrów dziennie):");
                             cowM.AddMilk(Console.ReadLine());
                         }
 
@@ -58,20 +57,20 @@ while (true)
                         var statsM = cowM.GetStatistics();
 
                         Console.WriteLine($"cena za kilogram karmy: {statsM.PriceForFeed},         cena za sprzedaż litru mleka: {statsM.PriceForMilk}");
-                        Console.WriteLine($"za {statsM.Days} dni było zjedzone {statsM.SumKilograms} kilogramów karmy i wypompowano {statsM.SumLitres} litry mleka\n");
-                        Console.WriteLine($"cena za wyprodukowane mleko: {statsM.MoneyForMilk:N2} zł\n");
-                        Console.WriteLine($"cena zjedzonej karmy: {statsM.MoneyForFeed:N2} zł\n");
-                        Console.WriteLine($"zarobki na krowie: {statsM.Earnings:N2}  zł\n");
-                        Console.WriteLine($"średni dochód na krowę: {statsM.AverageEarnings:N2} zł\n");
+                        Console.WriteLine($"za {statsM.Days} dni było zjedzone {statsM.SumKilograms} kilogramów karmy i wypompowano {statsM.SumLitres} litry mleka");
+                        Console.WriteLine($"cena za wyprodukowane mleko: {statsM.MoneyForMilk:N2} zł");
+                        Console.WriteLine($"cena zjedzonej karmy: {statsM.MoneyForFeed:N2} zł");
+                        Console.WriteLine($"krówa zarobila dla ciebie: {statsM.Earnings:N2} zł");
+                        Console.WriteLine($"średni dochód na krowę: {statsM.AverageEarnings:N2} zł");
                         Console.WriteLine($"min zjedzonej karmy: {statsM.MinFeed} kg");
-                        Console.WriteLine($"max zjedzonej karmy: {statsM.MaxFeed} kg\n");
+                        Console.WriteLine($"max zjedzonej karmy: {statsM.MaxFeed} kg");
                         Console.WriteLine($"min wypompowanego mleka {statsM.MinMilk} l");
                         Console.WriteLine($"max wypompowanego mleka {statsM.MaxMilk} l");
 
                         Console.ReadKey();
                         break;
                     default:
-                        throw new Exception("coś żle wpisałeś/wpisałaś");
+                        throw new Exception("coś żle wpisałeś(-aś)");
                 }
             }
             catch (Exception)
@@ -82,15 +81,15 @@ while (true)
     }
     if (read == "2")
     {
-        var cowf = new CowInFile(1);
-        cowf.DataAdded += CowDataAdded;
+        var cowF = new CowInFile(1);
+        cowF.DataAdded += CowDataAdded;
         do
         {
             Console.Clear();
-            Console.WriteLine("1. dodać kolejny dzień/dni (musicie wprowadzić spożywania karmy i produkowanie mleka)");
+            Console.WriteLine("1. dodać kolejny dzień/dni (musisz wprowadzić spożywania karmy i produkowanie mleka)");
             Console.WriteLine("2. pokazać tabelę z danymi");
             Console.WriteLine("3. usunąć dane z plików");
-            Console.WriteLine("wybierz \"q\" dla wyjścia z programu");
+            Console.WriteLine("wybierz \"q\" zeby wrucic do meni głównego");
 
             string reader = Console.ReadLine();
 
@@ -102,17 +101,17 @@ while (true)
                 {
                     case "1":
                         Console.Clear();
-                        Console.WriteLine("wybierz \"q\" dla wyjścia z dodawaniu");
-                        Console.WriteLine("ile dniw dodać?");
+                        Console.WriteLine("wybierz \"q\" dla wyjścia z meni dodawania");
+                        Console.WriteLine("ile chcesz dniw dodać?");
 
                         for (int i = int.Parse(Console.ReadLine()), a = 1; a <= i; a++)
                         {
-                            Console.WriteLine($"dzien {a}");
-                            Console.WriteLine($"dodaj ilość spożywania karmy (Kg/dziennie)");
-                            cowf.AddFeed(Console.ReadLine());
+                            Console.WriteLine($"dzień {a}");
+                            Console.WriteLine($"dodaj ilość spożywania karmy (kilogramów dziennie)");
+                            cowF.AddFeed(Console.ReadLine());
 
-                            Console.WriteLine($"dodaj ilość produkowanego mleka (L/dziennie):");
-                            cowf.AddMilk(Console.ReadLine());
+                            Console.WriteLine($"dodaj ilość produkowanego mleka (litrów dziennie):");
+                            cowF.AddMilk(Console.ReadLine());
                         }
 
                         break;
@@ -120,16 +119,16 @@ while (true)
                     case "2":
                         Console.Clear();
 
-                        var statsf = cowf.GetStatistics();
+                        var statsf = cowF.GetStatistics();
 
                         Console.WriteLine($"cena za kilogram karmy: {statsf.PriceForFeed},         cena za sprzedaż litru mleka: {statsf.PriceForMilk}");
-                        Console.WriteLine($"za {statsf.Days} dni było zjedzone {statsf.SumKilograms} kilogramów karmy i wypompowano {statsf.SumLitres} litry mleka\n");
-                        Console.WriteLine($"cena za wyprodukowane mleko: {statsf.MoneyForMilk:N2} zł\n");
-                        Console.WriteLine($"cena zjedzonej karmy: {statsf.MoneyForFeed:N2} zł\n");
-                        Console.WriteLine($"zarobki na krowie: {statsf.Earnings:N2}  zł\n");
-                        Console.WriteLine($"średni dochód na krowę: {statsf.AverageEarnings:N2} zł\n");
+                        Console.WriteLine($"za {statsf.Days} dni było zjedzone {statsf.SumKilograms} kilogramów karmy i wypompowano {statsf.SumLitres} litry mleka");
+                        Console.WriteLine($"cena za wyprodukowane mleko: {statsf.MoneyForMilk:N2} zł");
+                        Console.WriteLine($"cena zjedzonej karmy: {statsf.MoneyForFeed:N2} zł");
+                        Console.WriteLine($"krówa zarobila dla ciebie: {statsf.Earnings:N2}  zł");
+                        Console.WriteLine($"średni dochód na krowę: {statsf.AverageEarnings:N2} zł");
                         Console.WriteLine($"min zjedzonej karmy: {statsf.MinFeed} kg");
-                        Console.WriteLine($"max zjedzonej karmy: {statsf.MaxFeed} kg\n");
+                        Console.WriteLine($"max zjedzonej karmy: {statsf.MaxFeed} kg");
                         Console.WriteLine($"min wypompowanego mleka {statsf.MinMilk} l");
                         Console.WriteLine($"max wypompowanego mleka {statsf.MaxMilk} l");
 
@@ -138,16 +137,16 @@ while (true)
 
                     case "3":
                         Console.Clear();
-                        Console.WriteLine("wszystkie dane w plikach zostaną usunięte, jesteś pewien/pewna? (y == yes)");
+                        Console.WriteLine("wszystkie dane w plikach zostaną usunięte, jesteś pewien(a)? (y == yes)");
 
                         string clear = Console.ReadLine();
 
                         if (clear == "y")
-                            cowf.ClearFile();
+                            cowF.ClearFile();
 
                         break;
                     default:
-                        throw new Exception("coś żle wpisałeś/wpisałaś");
+                        throw new Exception("coś żle wpisałeś(-aś)");
                 }
             }
             catch (Exception)

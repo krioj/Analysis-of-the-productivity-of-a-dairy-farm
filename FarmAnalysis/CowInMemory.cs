@@ -7,12 +7,12 @@
         {
         }
 
-        private List<float> AmountFeed = new List<float>();
+        private List<float> AmoutFeed = new List<float>();
         private List<float> AmoutMilk = new List<float>();
 
         public override void AddFeed(float kilograms)
         {
-            AmountFeed.Add(kilograms);
+            AmoutFeed.Add(kilograms);
             if (DataAdded != null)
             {
                 DataAdded(this, new EventArgs());
@@ -36,7 +36,7 @@
             {
                 statistics.AddMilkInStatistics(litres);
             }
-            foreach (var kilograms in AmountFeed)
+            foreach (var kilograms in AmoutFeed)
             {
                 statistics.AddFeedInStatistics(kilograms);
             }
